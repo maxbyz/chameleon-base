@@ -39,6 +39,7 @@ require_once PATH_PROJECT_BASE.'/app/AppKernel.php';
 
 $devmode = defined('_DEVELOPMENT_MODE') && _DEVELOPMENT_MODE === true;
 $env = $devmode ? 'dev' : 'prod';
+$env =  'prod';
 //if($devmode) {
 //    Symfony\Component\Debug\Debug::enable(null, false);
 //}
