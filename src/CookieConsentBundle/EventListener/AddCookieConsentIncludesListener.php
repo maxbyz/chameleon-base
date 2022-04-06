@@ -16,6 +16,9 @@ use ChameleonSystem\CoreBundle\Service\RequestInfoServiceInterface;
 use ChameleonSystem\CoreBundle\Service\SystemPageServiceInterface;
 use Symfony\Component\Routing\Exception\RouteNotFoundException;
 use Twig\Environment;
+use Twig\Error\LoaderError;
+use Twig\Error\RuntimeError;
+use Twig\Error\SyntaxError;
 
 class AddCookieConsentIncludesListener
 {
@@ -55,7 +58,7 @@ class AddCookieConsentIncludesListener
     private $requestInfoService;
 
     /**
-     * @var \Twig_Environment
+     * @var Environment
      */
     private $twig;
 
@@ -100,9 +103,9 @@ class AddCookieConsentIncludesListener
     /**
      * @param HtmlIncludeEventInterface $event
      *
-     * @throws \Twig_Error_Loader
-     * @throws \Twig_Error_Runtime
-     * @throws \Twig_Error_Syntax
+     * @throws LoaderError
+     * @throws RuntimeError
+     * @throws SyntaxError
      */
     public function onGlobalHtmlHeaderInclude(HtmlIncludeEventInterface $event)
     {
@@ -117,9 +120,9 @@ class AddCookieConsentIncludesListener
     /**
      * @param HtmlIncludeEventInterface $event
      *
-     * @throws \Twig_Error_Loader
-     * @throws \Twig_Error_Runtime
-     * @throws \Twig_Error_Syntax
+     * @throws LoaderError
+     * @throws RuntimeError
+     * @throws SyntaxError
      */
     public function onGlobalHtmlFooterInclude(HtmlIncludeEventInterface $event)
     {
