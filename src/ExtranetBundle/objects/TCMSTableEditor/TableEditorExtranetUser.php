@@ -25,7 +25,9 @@ class TableEditorExtranetUser extends TCMSTableEditor
     private const LOGIN_TOKEN_LIFETIME_SECONDS = 20;
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
+     *
+     * @return void
      */
     public function DefineInterface()
     {
@@ -35,7 +37,9 @@ class TableEditorExtranetUser extends TCMSTableEditor
     }
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
+     *
+     * @return void
      */
     protected function GetCustomMenuItems()
     {

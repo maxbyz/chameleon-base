@@ -14,6 +14,9 @@ class DataMailProfileTableEditor extends TCMSTableEditor
 {
     const MESSAGE_MANAGER_CONSUMER = 'DataMailProfileTableEditorMessages';
 
+    /**
+     * {@inheritDoc}
+     */
     protected function DataIsValid(&$postData, $oFields = null)
     {
         $twig = $this->getTwigEnvironment();

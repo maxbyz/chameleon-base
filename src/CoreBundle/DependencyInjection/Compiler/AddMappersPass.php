@@ -20,7 +20,9 @@ use Symfony\Component\DependencyInjection\Reference;
 class AddMappersPass implements CompilerPassInterface
 {
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
+     *
+     * @return void
      */
     public function process(ContainerBuilder $container)
     {

@@ -121,7 +121,7 @@ class ChameleonStandardExtension extends AbstractExtension
      * Forbids javascript: and data: URLs as well as URLs that are malformed enough that parse_url does not recognize
      * them.
      *
-     * @param $string
+     * @param string $string
      *
      * @return bool
      */

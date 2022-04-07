@@ -45,6 +45,9 @@ class ResponseVariableReplacer implements ResponseVariableReplacerInterface
         $this->variables[$key] = $value;
     }
 
+    /**
+     * @return void
+     */
     public function handleResponse(FilterContentEvent $event)
     {
         $event->setContent($this->replaceVariables($event->getContent()));

@@ -135,6 +135,11 @@ class TCMSRecord implements IPkgCmsSessionPostWakeupListener
         }
     }
 
+    /**
+     * @param string $table
+     * @param string $id
+     * @param string $iLanguageId
+     */
     public function __construct($table = null, $id = null, $iLanguageId = null)
     {
         if (null !== $table) {
