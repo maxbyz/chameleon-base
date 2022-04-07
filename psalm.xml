@@ -6,7 +6,7 @@
 -->
 
 <psalm
-    errorLevel="6"
+    errorLevel="5"
     resolveFromConfigFile="true"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns="https://getpsalm.org/schema/config"
@@ -38,6 +38,11 @@
         <file name="../../../app/config/config.inc.php" />
         <file name="src/CoreBundle/Resources/config/defaults.inc.php" />
     </extraFiles>
+
+    <stubs>
+        <file preloadClasses="true" name="psalm-stubs/Container.stub" />
+    </stubs>
+
 
     <plugins>
         <pluginClass class="Psalm\SymfonyPsalmPlugin\Plugin">
@@ -73,6 +78,9 @@
         <MissingReturnType errorLevel="error" />
         <MissingParamType errorLevel="error" />
         <MissingPropertyType errorLevel="error" />
+
+        <!-- TODO Not supress? -->
+        <MoreSpecificImplementedParamType errorLevel="suppress" />
 
         <UndefinedDocblockClass>
             <errorLevel type="suppress">

@@ -51,7 +51,7 @@ class Twig_Node_Include_Decorator extends Node implements NodeOutputInterface
         return $this->original->getIterator();
     }
 
-    public function getNodeTag(): string
+    public function getNodeTag(): ?string
     {
         return $this->original->getNodeTag();
     }
@@ -78,7 +78,7 @@ class Twig_Node_Include_Decorator extends Node implements NodeOutputInterface
         $this->original->setTemplateName($name);
     }
 
-    public function getTemplateName(): string
+    public function getTemplateName(): ?string
     {
         return $this->original->getTemplateName();
     }
@@ -88,7 +88,7 @@ class Twig_Node_Include_Decorator extends Node implements NodeOutputInterface
         $this->original->setSourceContext($source);
     }
 
-    public function getSourceContext(): Source
+    public function getSourceContext(): ?Source
     {
         return $this->original->getSourceContext();
     }

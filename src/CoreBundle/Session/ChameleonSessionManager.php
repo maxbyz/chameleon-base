@@ -156,7 +156,7 @@ class ChameleonSessionManager implements ChameleonSessionManagerInterface
     }
 
     /**
-     * @return Request
+     * @return Request|null
      */
     protected function getRequest()
     {

@@ -124,7 +124,10 @@ class TableEditorExtranetUser extends TCMSTableEditor
             && true === $cmsUser->oAccessManager->PermitFunction($permission);
     }
 
-    private function getPortalForExtranetUserId(string $userId): TdbCmsPortal
+    /**
+     * @return TdbCmsPortal|false
+     */
+    private function getPortalForExtranetUserId(string $userId)
     {
         $extranetUser = TdbDataExtranetUser::GetNewInstance();
 
