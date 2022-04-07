@@ -94,7 +94,7 @@ class TableEditorExtranetUser extends TCMSTableEditor
      *
      * @see LoginByTokenController::loginAction()
      *
-     * @return never-returns - Ends request by redirecting
+     * @return void
      */
     public function LoginAsExtranetUser(): void
     {

@@ -244,7 +244,7 @@ class TIterator implements Iterator
     /**
      * returns current item without moving the item pointer.
      *
-     * @return T|false
+     * @return T
      */
     public function &current()
     {

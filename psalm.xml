@@ -6,7 +6,7 @@
 -->
 
 <psalm
-    errorLevel="7"
+    errorLevel="6"
     resolveFromConfigFile="true"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns="https://getpsalm.org/schema/config"
@@ -30,20 +30,29 @@
             <file name="src/CoreBundle/Maintenance/Migrator62/autoloadTemplate.php" />
         </ignoreFiles>
     </projectFiles>
+
     <extraFiles>
         <directory name="../../../app/cache/autoclasses" />
         <file name="../../../app/config/config.inc.php" />
         <file name="src/CoreBundle/Resources/config/defaults.inc.php" />
     </extraFiles>
+
     <plugins>
         <pluginClass class="Psalm\SymfonyPsalmPlugin\Plugin">
             <containerXml>../../../var/cache/dev/appAppKernelDevDebugContainer.xml</containerXml>
         </pluginClass>
     </plugins>
+
     <fileExtensions>
         <extension name=".php"/>
         <extension name=".twig" checker="./vendor/psalm/plugin-symfony/src/Twig/TemplateFileAnalyzer.php"/>
     </fileExtensions>
+
+    <universalObjectCrates>
+        <!-- TCMSstdClass can have dynamic properties -->
+        <class name="TCMSstdClass"/>
+    </universalObjectCrates>
+
     <issueHandlers>
 
         <!-- Ignore undefined constants for now: psalm is not picking up the declarations in `*.inc.php` files? -->
@@ -57,6 +66,8 @@
 
         <!-- We use container based injection heavily -->
         <PluginIssue name="ContainerDependency" errorLevel="suppress" />
+
+        <UnusedPsalmSuppress errorLevel="error" />
 
         <UndefinedDocblockClass>
             <errorLevel type="suppress">

@@ -297,7 +297,7 @@ abstract class ChameleonController implements ChameleonControllerInterface
      *
      * @var string $pagedef
      *
-     * @return TCMSPageDefinitionFile|bool
+     * @return TCMSPageDefinitionFile|false
      *
      * @deprecated since 6.2.10 - use chameleon_system_core.data_access_cms_master_pagedef_file or chameleon_system_core.data_access_cms_master_pagedef_database instead
      */
@@ -346,6 +346,8 @@ abstract class ChameleonController implements ChameleonControllerInterface
             $this->global->SetExecutingModulePointer($this->moduleLoader->modules[$spotName]);
             $this->moduleLoader->modules[$spotName]->Init();
             $tmp = null;
+
+            /** @psalm-suppress NullArgument */
             $this->global->SetExecutingModulePointer($tmp);
         }
         reset($this->moduleLoader->modules);
@@ -383,6 +385,8 @@ abstract class ChameleonController implements ChameleonControllerInterface
                     $this->global->SetExecutingModulePointer($module);
                     $module->_CallMethod($method);
                     $tmp = null;
+
+                    /** @psalm-suppress NullArgument */
                     $this->global->SetExecutingModulePointer($tmp);
                 }
             } else {
@@ -554,6 +558,7 @@ abstract class ChameleonController implements ChameleonControllerInterface
      */
     protected function injectHeaderIncludes($sPageContent)
     {
+        /** @var array{js: string[], other: string[]} $aCustomHeaderData */
         static $aCustomHeaderData = null;
 
         if (
@@ -594,7 +599,8 @@ abstract class ChameleonController implements ChameleonControllerInterface
      *
      * @param bool $bAsArray
      *
-     * @return string
+     * @return string|string[]
+     * @psalm-return ($bAsArray is true ? string[] : string)
      */
     protected function _GetCustomHeaderData($bAsArray = false)
     {
@@ -612,9 +618,9 @@ abstract class ChameleonController implements ChameleonControllerInterface
     }
 
     /**
-     * @param array $aResourceArray
+     * @param string[] $aResourceArray
      *
-     * @return array
+     * @return array{js: string[], other: string[]}
      */
     protected function splitHeaderDataIntoJSandOther($aResourceArray)
     {
@@ -682,9 +688,9 @@ abstract class ChameleonController implements ChameleonControllerInterface
     /**
      * extra hook that replaces messages and custom vars in the string passed.
      *
-     * @param object|array|string $sPageContent
+     * @param \stdClass|array|string $sPageContent
      *
-     * @return string
+     * @return \stdClass|array|string
      *
      * @deprecated since 6.3.0 - use ResponseVariableReplacerInterface::replaceVariables() instead.
      *

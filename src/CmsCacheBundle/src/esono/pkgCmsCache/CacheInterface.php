@@ -42,7 +42,7 @@ interface CacheInterface
      * adds or updates a cache object.
      *
      * @param string $key               - the cache key
-     * @param object $content           - object to be stored
+     * @param mixed  $content           - object to be stored
      * @param array  $trigger           - cache trigger array(array('table'=>'','id'=>''),array('table'=>'','id'=>''),...);
      * @param int    $iMaxLiveInSeconds - max age in seconds before the cache content expires - default = 30 days
      */
